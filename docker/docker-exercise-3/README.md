@@ -13,9 +13,14 @@ Build this directory into a docker container. Remember to build the go binary fo
 When running your docker container you will need to:
 
 - Set an environment variable for the PORT
+    docker run -d -e PORT=4000
 - Set an environment variavle for the FILEPATH
+    docker run -d -e PORT=4000 -e FILEPATH=/secret/secret-message.txt
 - Publish the same port as the environment variable PORT
+    docker run -d -e PORT=4000 -e FILEPATH=/secret/secret-message.txt -p 4000:4000
 - Mount a volume containing `secret-message.txt` into your container corresponding to `FILEPATH`
+    docker run -d -e PORT=4000 -e FILEPATH=/secret/secret-message.txt -p 4000:4000 -v $(pwd)/secret/:/secret/:ro tzchen/docker-exercise-3
+
 
 Take another look at [Dr. Stearn's Docker tutorial](https://drstearns.github.io/tutorials/docker/) if you need hints!
 
